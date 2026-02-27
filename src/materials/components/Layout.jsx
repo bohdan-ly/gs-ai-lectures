@@ -1,8 +1,57 @@
-import React from 'react';
+import GridIcon from 'assets/icons/grid.svg';
+import ListIcon from 'assets/icons/list.svg';
+import PlaceHolder from 'assets/icons/placeholder.jpg';
 import SplitText from '../custom/SplitText';
 import '../styles/MaterialsPage.css';
 
-function Layout(props) {
+import { LectureCard } from './Lecture';
+
+const lecturesMock = [
+  {
+    id: 1,
+    title: 'Лекція №3. Q/A сесія з React',
+    description:
+      'На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React. Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків',
+    image: PlaceHolder,
+  },
+  {
+    id: 2,
+    title: 'Лекція №3. Q/A сесія з React',
+    description:
+      'На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React. Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків',
+    image: PlaceHolder,
+  },
+  {
+    id: 3,
+    title: 'Лекція №3. Q/A сесія з React',
+    description:
+      'На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React. Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків',
+    image: PlaceHolder,
+  },
+  {
+    id: 4,
+    title: 'Лекція №3. Q/A сесія з React',
+    description:
+      'На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React. Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків',
+    image: PlaceHolder,
+  },
+  {
+    id: 5,
+    title: 'Лекція №3. Q/A сесія з React',
+    description:
+      'На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React. Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків',
+    image: PlaceHolder,
+  },
+  {
+    id: 6,
+    title: 'Лекція №3. Q/A сесія з React',
+    description:
+      'На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React. Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків',
+    image: PlaceHolder,
+  },
+];
+
+function Layout({ listView, viewTypes, switchLayout }) {
   return (
     <div className="materials">
       <div className="container">
@@ -34,141 +83,24 @@ function Layout(props) {
 
           <div className="material__header__mode">
             <button
-              className={`button__mode${!props.listView ? ' button__mode--active' : ''}`}
-              onClick={props.gridLayoutHandler}
+              className={`button__mode${!listView ? ' button__mode--active' : ''}`}
+              onClick={() => switchLayout(viewTypes.GRID)}
             >
-              <img src="../../src/assets/matrials_page/grid.svg" alt="grid-icon" />
+              <img src={GridIcon} alt="grid-icon" />
             </button>
             <button
-              className={`button__mode${props.listView ? ' button__mode--active' : ''}`}
-              onClick={props.listLayoutHandler}
+              className={`button__mode${listView ? ' button__mode--active' : ''}`}
+              onClick={() => switchLayout(viewTypes.LIST)}
             >
-              <img src="../../src/assets/matrials_page/list.svg" alt="list-icon" />
+              <img src={ListIcon} alt="list-icon" />
             </button>
           </div>
         </div>
 
-        <div className={props.listView ? 'materials__list--row' : 'materials__list'}>
-          <div className={`materials__list__card${props.listView ? '--row' : ''}`}>
-            <div className="materials__list__card__image">
-              <img src="../../src/assets/matrials_page/placeholder.jpg" alt="card1-icon" />
-            </div>
-            <div className="materials__list__card__content">
-              <div className="materials__list__card__content__text">
-                <h3>Лекція №3. Q/A сесія з React</h3>
-                <p>
-                  На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React.
-                  Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків
-                </p>
-              </div>
-              <div className="materials__list__card__content__button">
-                <button className="button icon">
-                  <span>Переглянути</span>
-                  <img src="../../src/assets/matrials_page/arrow_btn.svg" alt="play-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className={`materials__list__card${props.listView ? '--row' : ''}`}>
-            <div className="materials__list__card__image">
-              <img src="../../src/assets/matrials_page/placeholder.jpg" alt="card1-icon" />
-            </div>
-            <div className="materials__list__card__content">
-              <div className="materials__list__card__content__text">
-                <h3>Лекція №3. Q/A сесія з React</h3>
-                <p>
-                  На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React.
-                  Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків
-                </p>
-              </div>
-              <div className="materials__list__card__content__button">
-                <button className="button icon">
-                  <span>Переглянути</span>
-                  <img src="../../src/assets/matrials_page/arrow_btn.svg" alt="play-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className={`materials__list__card${props.listView ? '--row' : ''}`}>
-            <div className="materials__list__card__image">
-              <img src="../../src/assets/matrials_page/placeholder.jpg" alt="card1-icon" />
-            </div>
-            <div className="materials__list__card__content">
-              <div className="materials__list__card__content__text">
-                <h3>Лекція №3. Q/A сесія з React</h3>
-                <p>
-                  На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React.
-                  Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків
-                </p>
-              </div>
-              <div className="materials__list__card__content__button">
-                <button className="button icon">
-                  <span>Переглянути</span>
-                  <img src="../../src/assets/matrials_page/arrow_btn.svg" alt="play-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className={`materials__list__card${props.listView ? '--row' : ''}`}>
-            <div className="materials__list__card__image">
-              <img src="../../src/assets/matrials_page/placeholder.jpg" alt="card1-icon" />
-            </div>
-            <div className="materials__list__card__content">
-              <div className="materials__list__card__content__text">
-                <h3>Лекція №3. Q/A сесія з React</h3>
-                <p>
-                  На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React.
-                  Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків
-                </p>
-              </div>
-              <div className="materials__list__card__content__button">
-                <button className="button icon">
-                  <span>Переглянути</span>
-                  <img src="../../src/assets/matrials_page/arrow_btn.svg" alt="play-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className={`materials__list__card${props.listView ? '--row' : ''}`}>
-            <div className="materials__list__card__image">
-              <img src="../../src/assets/matrials_page/placeholder.jpg" alt="card1-icon" />
-            </div>
-            <div className="materials__list__card__content">
-              <div className="materials__list__card__content__text">
-                <h3>Лекція №3. Q/A сесія з React</h3>
-                <p>
-                  На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React.
-                  Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків
-                </p>
-              </div>
-              <div className="materials__list__card__content__button">
-                <button className="button icon">
-                  <span>Переглянути</span>
-                  <img src="../../src/assets/matrials_page/arrow_btn.svg" alt="play-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className={`materials__list__card${props.listView ? '--row' : ''}`}>
-            <div className="materials__list__card__image">
-              <img src="../../src/assets/matrials_page/placeholder.jpg" alt="card1-icon" />
-            </div>
-            <div className="materials__list__card__content">
-              <div className="materials__list__card__content__text">
-                <h3>Лекція №3. Q/A сесія з React</h3>
-                <p>
-                  На цій лекції відбудеться Q/A сесія, присвячена розробці з використанням React.
-                  Розглянемо поширені запитання щодо компонентної архітектури, стану, хуків
-                </p>
-              </div>
-              <div className="materials__list__card__content__button">
-                <button className="button icon">
-                  <span>Переглянути</span>
-                  <img src="../../src/assets/matrials_page/arrow_btn.svg" alt="play-icon" />
-                </button>
-              </div>
-            </div>
-          </div>
+        <div className={listView ? 'materials__list--row' : 'materials__list'}>
+          {lecturesMock.map((lecture) => (
+            <LectureCard key={lecture.id} lecture={lecture} listView={listView} />
+          ))}
         </div>
       </div>
     </div>

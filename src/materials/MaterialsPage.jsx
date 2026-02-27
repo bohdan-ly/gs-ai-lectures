@@ -1,27 +1,21 @@
-import React from 'react';
-import './styles/MaterialsPage.css';
-import Layout from './components/Layout';
 import { useState } from 'react';
+import Layout from './components/Layout';
+import './styles/MaterialsPage.css';
+
+const viewTypes = {
+  GRID: 'grid',
+  LIST: 'list',
+};
 
 function MaterialsPage() {
-  const [listView, setListView] = useState(false);
+  const [view, setView] = useState(viewTypes.GRID);
 
-  const listLayoutHandler = () => {
-    setListView(true);
-  };
-
-  const gridLayoutHandler = () => {
-    setListView(false);
+  const switchLayout = (view) => {
+    setView(view);
   };
 
   return (
-    <>
-      <Layout
-        listView={listView}
-        listLayoutHandler={listLayoutHandler}
-        gridLayoutHandler={gridLayoutHandler}
-      />
-    </>
+    <Layout listView={view === viewTypes.LIST} switchLayout={switchLayout} viewTypes={viewTypes} />
   );
 }
 
